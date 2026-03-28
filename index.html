@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pallettoo - Recruitment Dashboard</title>
+    <title>Pallettoo Hiring Report</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -11,31 +11,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .glass-effect { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
         .custom-scrollbar::-webkit-scrollbar { height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen">
+<body class="bg-[#fcfdfe] text-slate-900 min-h-screen">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState } = React;
 
-        // --- SVGs for Icons ---
         const Icons = {
             Zap: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>,
-            Users: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
-            Award: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>,
-            Globe: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>,
-            Alert: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>,
-            Search: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>,
-            Check: () => <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>,
-            Brief: () => <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>,
-            Mail: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>,
-            User: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            Check: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>,
+            Target: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>,
+            User: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>,
+            Mail: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         };
 
         const candidates = [
@@ -51,18 +43,22 @@
             { id: 10, name: "Nashad P", age: 28, maritalStatus: "Single", prevCompany: "Various Contracting", gulfExp: "No", degree: "Electrician", indExp: "4 Yrs", control: "Poor", mechanics: "None", welding: "Not Mentioned", handsOn: 1, final: 1, status: "Rejected" }
         ];
 
+        const jobRequirements = [
+            "3+ Years of Industrial Maintenance Experience.",
+            "Classic Control, Wiring, and Electrical Cabinet Assembly.",
+            "Mechanical Installation & Hydraulic/Pneumatic Repair.",
+            "Ability to read technical diagrams (Electrical & Hydraulic).",
+            "Welding Skills (Arc, TIG/MIG) as an added advantage.",
+            "Working under pressure and team collaboration."
+        ];
+
         function App() {
             const [searchTerm, setSearchTerm] = useState("");
 
-            const filtered = candidates.filter(c => 
-                c.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                c.prevCompany.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-
             const ScoreBar = ({ score }) => {
-                const color = score >= 8 ? 'bg-emerald-500' : score >= 6 ? 'bg-indigo-500' : score >= 4 ? 'bg-amber-500' : 'bg-rose-500';
+                const color = score >= 8 ? 'bg-emerald-500' : score >= 6 ? 'bg-indigo-500' : 'bg-rose-500';
                 return (
-                    <div className="flex items-center gap-2 w-full min-w-[100px]">
+                    <div className="flex items-center gap-2 w-full min-w-[120px]">
                         <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
                             <div className={`h-full ${color}`} style={{ width: `${score * 10}%` }}></div>
                         </div>
@@ -71,64 +67,59 @@
                 );
             };
 
-            const Badge = ({ text, type }) => {
-                const styles = {
+            const Badge = ({ text }) => {
+                const colors = {
                     "Excellent": "bg-emerald-50 text-emerald-700 border-emerald-100",
                     "Very Good": "bg-teal-50 text-teal-700 border-teal-100",
                     "Medium": "bg-amber-50 text-amber-700 border-amber-100",
                     "Poor": "bg-rose-50 text-rose-700 border-rose-100",
-                    "None": "bg-slate-50 text-slate-400 border-slate-200 border-dashed",
-                    "Experienced": "bg-sky-50 text-sky-700 border-sky-100",
-                    "Not Mentioned": "bg-slate-50 text-slate-400 border-slate-200 italic"
+                    "Experienced": "bg-sky-50 text-sky-700 border-sky-100"
                 };
-                return <div className={`px-2 py-0.5 text-[9px] font-bold uppercase rounded border ${styles[text] || "bg-slate-100"}`}>{text}</div>;
+                return <div className={`px-2 py-0.5 text-[9px] font-bold uppercase rounded border ${colors[text] || "bg-slate-50 text-slate-400 border-slate-200 italic"}`}>{text}</div>;
             };
 
             return (
                 <div className="flex flex-col min-h-screen">
-                    <nav className="bg-slate-900 text-white p-4 sticky top-0 z-50 shadow-xl">
-                        <div className="max-w-7xl mx-auto flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div className="bg-indigo-600 p-2 rounded-lg"><Icons.Zap /></div>
+                    <nav className="bg-slate-900 text-white p-6 shadow-2xl">
+                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-indigo-600 p-3 rounded-2xl shadow-lg"><Icons.Zap /></div>
                                 <div>
-                                    <h1 className="text-xl font-black leading-none uppercase">Pallettoo Dashboard</h1>
-                                    <p className="text-[10px] font-bold text-indigo-300 tracking-widest mt-1 uppercase">HR Management System</p>
+                                    <h1 className="text-2xl font-black uppercase tracking-tight">Pallettoo hiring candidates report</h1>
+                                    <p className="text-xs font-bold text-indigo-300 tracking-[0.3em] uppercase mt-1">Pallettoo gosn Industry Co KSA</p>
                                 </div>
-                            </div>
-                            <div className="hidden sm:block text-right">
-                                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Maintenance Department</p>
-                                <p className="text-xs font-bold">Industrial Operations</p>
                             </div>
                         </div>
                     </nav>
 
                     <main className="max-w-7xl mx-auto p-4 md:p-8 w-full flex-grow">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                            {[
-                                { label: "Total Candidates", val: 10, icon: <Icons.Users />, color: "text-blue-600", bg: "bg-blue-50" },
-                                { label: "Top Picks", val: 2, icon: <Icons.Award />, color: "text-emerald-600", bg: "bg-emerald-50" },
-                                { label: "Gulf Experience", val: 1, icon: <Icons.Globe />, color: "text-indigo-600", bg: "bg-indigo-50" },
-                                { label: "Rejected", val: 6, icon: <Icons.Alert />, color: "text-rose-600", bg: "bg-rose-50" }
-                            ].map((stat, i) => (
-                                <div key={i} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
-                                    <div className={`p-3 rounded-xl ${stat.bg} ${stat.color}`}>{stat.icon}</div>
-                                    <div>
-                                        <p className="text-[10px] text-slate-500 font-black uppercase tracking-wider">{stat.label}</p>
-                                        <p className="text-2xl font-black text-slate-800 leading-none">{stat.val}</p>
+                        {/* Job Requirements Section */}
+                        <section className="mb-10 bg-indigo-50 border border-indigo-100 rounded-[2.5rem] p-8 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-8 opacity-10 text-indigo-900"><Icons.Target /></div>
+                            <h2 className="text-lg font-black text-indigo-900 uppercase tracking-widest mb-6 flex items-center gap-2">
+                                <span className="h-1 w-8 bg-indigo-600 rounded-full"></span> Job Requirements & Criteria
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-8">
+                                {jobRequirements.map((req, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <div className="mt-1 text-indigo-600"><Icons.Check /></div>
+                                        <p className="text-sm font-semibold text-slate-700">{req}</p>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        </section>
 
-                        <div className="bg-white rounded-[2rem] shadow-xl border border-slate-200 overflow-hidden">
-                            <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                <h2 className="text-xl font-black text-slate-800 tracking-tight">Recruitment Matrix</h2>
+                        {/* Search & Table Header */}
+                        <div className="bg-white rounded-[2.5rem] shadow-xl border border-slate-200 overflow-hidden">
+                            <div className="p-8 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <h2 className="text-xl font-black text-slate-800 tracking-tight flex items-center gap-3">
+                                    <div className="w-2 h-6 bg-indigo-500 rounded-full"></div> Recruitment Evaluation Matrix
+                                </h2>
                                 <div className="relative">
-                                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Icons.Search /></div>
                                     <input 
                                         type="text" 
-                                        placeholder="Search by name or company..." 
-                                        className="w-full md:w-80 pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                                        placeholder="Search by name, company..." 
+                                        className="w-full md:w-80 pl-6 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
                                     />
@@ -138,43 +129,43 @@
                             <div className="overflow-x-auto custom-scrollbar">
                                 <table className="w-full text-left min-w-[1000px]">
                                     <thead>
-                                        <tr className="bg-slate-50/50 border-b border-slate-100 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                                            <th className="px-6 py-4">Candidate Profile</th>
-                                            <th className="px-6 py-4">Work Experience</th>
-                                            <th className="px-6 py-4 text-center">Control</th>
-                                            <th className="px-6 py-4 text-center">Mech</th>
-                                            <th className="px-6 py-4 text-center">Welding</th>
-                                            <th className="px-6 py-4">Manual Skills</th>
-                                            <th className="px-6 py-4 text-right">Rating</th>
+                                        <tr className="bg-slate-50/50 border-b border-slate-100 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                            <th className="px-8 py-5">Candidate Details</th>
+                                            <th className="px-6 py-5">Experience Background</th>
+                                            <th className="px-6 py-5 text-center">Control</th>
+                                            <th className="px-6 py-5 text-center">Mech</th>
+                                            <th className="px-6 py-5 text-center">Welding</th>
+                                            <th className="px-6 py-5">Manual Skills</th>
+                                            <th className="px-8 py-5 text-right">Rating</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-50">
-                                        {filtered.map(c => (
-                                            <tr key={c.id} className={`hover:bg-slate-50/80 transition-colors ${c.status === 'Shortlisted' ? 'bg-indigo-50/30' : ''}`}>
-                                                <td className="px-6 py-5">
+                                        {candidates.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase())).map(c => (
+                                            <tr key={c.id} className={`hover:bg-slate-50/50 transition-colors ${c.status === 'Shortlisted' ? 'bg-indigo-50/40' : ''}`}>
+                                                <td className="px-8 py-6">
                                                     <div className="flex flex-col">
-                                                        <span className="font-bold text-slate-900 text-sm">{c.name}</span>
-                                                        <span className="text-[10px] text-slate-500 font-medium">{c.degree}</span>
-                                                        <div className="flex gap-1 mt-2">
-                                                            <span className="text-[8px] bg-white border border-slate-200 px-1.5 py-0.5 rounded font-bold text-slate-400 uppercase">{c.age} Yrs</span>
-                                                            <span className="text-[8px] bg-white border border-slate-200 px-1.5 py-0.5 rounded font-bold text-slate-400 uppercase">{c.maritalStatus}</span>
+                                                        <span className="font-black text-slate-900 text-[15px]">{c.name}</span>
+                                                        <span className="text-[11px] text-slate-500 font-bold mt-1 uppercase tracking-tight">{c.degree}</span>
+                                                        <div className="flex gap-1.5 mt-3">
+                                                            <span className="text-[9px] bg-slate-100 px-2 py-0.5 rounded-md font-black text-slate-500 uppercase">{c.age} Yrs</span>
+                                                            <span className="text-[9px] bg-slate-100 px-2 py-0.5 rounded-md font-black text-slate-500 uppercase">{c.maritalStatus}</span>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-5">
-                                                    <div className="flex flex-col gap-1">
-                                                        <span className="text-xs font-black text-slate-700">{c.indExp}</span>
-                                                        <span className="text-[10px] text-slate-500 flex items-center gap-1"><Icons.Brief /> {c.prevCompany}</span>
-                                                        {c.gulfExp.includes("Yes") && <span className="text-[9px] text-emerald-600 font-black uppercase flex items-center gap-1"><Icons.Check /> {c.gulfExp}</span>}
+                                                <td className="px-6 py-6">
+                                                    <div className="flex flex-col gap-1.5">
+                                                        <span className="text-xs font-black text-slate-800">{c.indExp}</span>
+                                                        <span className="text-[10px] text-slate-500 font-bold flex items-center gap-1.5 uppercase">🏢 {c.prevCompany}</span>
+                                                        {c.gulfExp.includes("Yes") && <span className="text-[10px] text-emerald-600 font-black uppercase flex items-center gap-1 mt-1">🇸🇦 {c.gulfExp}</span>}
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-5"><div className="flex justify-center"><Badge text={c.control} /></div></td>
-                                                <td className="px-6 py-5"><div className="flex justify-center"><Badge text={c.mechanics} /></div></td>
-                                                <td className="px-6 py-5"><div className="flex justify-center"><Badge text={c.welding} /></div></td>
-                                                <td className="px-6 py-5"><ScoreBar score={c.handsOn} /></td>
-                                                <td className="px-6 py-5 text-right">
-                                                    <div className={`inline-flex items-center justify-center h-10 w-10 rounded-2xl font-black text-white text-lg
-                                                        ${c.final >= 8 ? 'bg-emerald-500 shadow-lg shadow-emerald-200' : c.final >= 6 ? 'bg-indigo-500 shadow-lg shadow-indigo-200' : 'bg-rose-500 shadow-lg shadow-rose-200'}`}>
+                                                <td className="px-6 py-6 text-center"><div className="flex justify-center"><Badge text={c.control} /></div></td>
+                                                <td className="px-6 py-6 text-center"><div className="flex justify-center"><Badge text={c.mechanics} /></div></td>
+                                                <td className="px-6 py-6 text-center"><div className="flex justify-center"><Badge text={c.welding} /></div></td>
+                                                <td className="px-6 py-6"><ScoreBar score={c.handsOn} /></td>
+                                                <td className="px-8 py-6 text-right">
+                                                    <div className={`inline-flex items-center justify-center h-12 w-12 rounded-2xl font-black text-white text-xl shadow-xl border-b-4
+                                                        ${c.final >= 8 ? 'bg-emerald-500 border-emerald-700 shadow-emerald-200' : c.final >= 6 ? 'bg-indigo-500 border-indigo-700 shadow-indigo-200' : 'bg-rose-500 border-rose-700 shadow-rose-200'}`}>
                                                         {c.final}
                                                     </div>
                                                 </td>
@@ -186,33 +177,30 @@
                         </div>
                     </main>
 
-                    <footer className="bg-white border-t border-slate-100 py-12 mt-12">
+                    <footer className="bg-white border-t border-slate-100 py-16">
                         <div className="max-w-7xl mx-auto px-4">
-                            <div className="flex flex-col md:flex-row items-center justify-between bg-slate-900 rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-                                <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-500/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
-                                
-                                <div className="flex items-center gap-6 z-10">
-                                    <div className="h-16 w-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl flex items-center justify-center text-white shadow-xl border border-indigo-400/20">
+                            <div className="flex flex-col md:flex-row items-center justify-between bg-slate-900 rounded-[3rem] p-10 shadow-2xl relative overflow-hidden border-b-8 border-indigo-600">
+                                <div className="flex items-center gap-8 z-10">
+                                    <div className="h-20 w-20 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-3xl flex items-center justify-center text-white shadow-2xl border border-indigo-400/20">
                                         <Icons.User />
                                     </div>
                                     <div className="text-center md:text-left">
-                                        <p className="text-[10px] text-indigo-300 font-black uppercase tracking-[0.3em] mb-1">Created By</p>
-                                        <h3 className="text-2xl font-black text-white tracking-tight">Zakaria Cheloufi</h3>
-                                        <div className="flex items-center justify-center md:justify-start gap-2 text-indigo-400 mt-2 font-bold hover:text-white transition-colors">
+                                        <p className="text-[10px] text-indigo-400 font-black uppercase tracking-[0.5em] mb-2">Report Author</p>
+                                        <h3 className="text-3xl font-black text-white tracking-tight">Zakaria Cheloufi</h3>
+                                        <div className="flex items-center justify-center md:justify-start gap-2 text-indigo-400 mt-2 font-black">
                                             <Icons.Mail />
-                                            <a href="mailto:Zakaria@pallettoo.com" className="text-sm">Zakaria@pallettoo.com</a>
+                                            <a href="mailto:Zakaria@pallettoo.com" className="text-sm hover:text-white transition-colors underline decoration-indigo-800 underline-offset-4">Zakaria@pallettoo.com</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="mt-8 md:mt-0 text-center md:text-right z-10">
-                                    <p className="text-white font-black text-lg">Pallettoo Factory</p>
-                                    <p className="text-slate-400 text-xs font-medium mt-1 uppercase tracking-widest">© 2026 GOSN Industry Co.</p>
-                                    <div className="flex justify-center md:justify-end gap-1.5 mt-4">
-                                        <div className="w-8 h-1 bg-indigo-500 rounded-full"></div>
-                                        <div className="w-2 h-1 bg-slate-700 rounded-full"></div>
-                                        <div className="w-2 h-1 bg-slate-700 rounded-full"></div>
+                                <div className="mt-10 md:mt-0 text-center md:text-right z-10">
+                                    <p className="text-white font-black text-xl uppercase tracking-tighter">Pallettoo Factory</p>
+                                    <p className="text-slate-400 text-xs font-bold mt-1 uppercase tracking-[0.3em]">© 2026 GOSN Industry Co. KSA</p>
+                                    <div className="flex justify-center md:justify-end gap-2 mt-6">
+                                        <div className="w-12 h-1.5 bg-indigo-500 rounded-full"></div>
+                                        <div className="w-3 h-1.5 bg-indigo-900 rounded-full"></div>
+                                        <div className="w-3 h-1.5 bg-indigo-900 rounded-full"></div>
                                     </div>
                                 </div>
                             </div>
