@@ -1,0 +1,416 @@
+import React, { useState } from 'react';
+import { 
+  Users, 
+  Award, 
+  Wrench, 
+  Zap, 
+  Globe, 
+  Search, 
+  ChevronRight, 
+  CheckCircle2, 
+  XCircle, 
+  AlertCircle 
+} from 'lucide-react';
+
+// --- DATA ---
+const candidates = [
+  {
+    id: 1,
+    name: "Bhuvaneswaran T",
+    country: "India",
+    age: 25,
+    maritalStatus: "Single",
+    prevCompany: "Texmo Industries",
+    gulfExp: "No",
+    degree: "Diploma (Mechatronics)",
+    indExp: "3+ Yrs",
+    control: "Excellent",
+    mechanics: "Excellent",
+    welding: "Not Mentioned",
+    handsOn: 9,
+    final: 9,
+    status: "Shortlisted"
+  },
+  {
+    id: 2,
+    name: "Mohammad Ashfaque",
+    country: "India",
+    age: 37,
+    maritalStatus: "Married",
+    prevCompany: "Al Watania Plastics",
+    gulfExp: "Yes (KSA)",
+    degree: "Technical (Electrical)",
+    indExp: "12+ Yrs",
+    control: "Excellent",
+    mechanics: "Very Good",
+    welding: "Not Mentioned",
+    handsOn: 8.5,
+    final: 8,
+    status: "Shortlisted"
+  },
+  {
+    id: 3,
+    name: "Affan ME",
+    country: "India",
+    age: 25,
+    maritalStatus: "Single",
+    prevCompany: "Toyota Industries",
+    gulfExp: "No",
+    degree: "ITI (Trainee Maint.)",
+    indExp: "2 Yrs",
+    control: "Excellent",
+    mechanics: "Medium",
+    welding: "Not Mentioned",
+    handsOn: 7,
+    final: 6.5,
+    status: "Backup"
+  },
+  {
+    id: 4,
+    name: "Asif Pasha",
+    country: "India",
+    age: 35,
+    maritalStatus: "Married",
+    prevCompany: "Bonn Nutrients",
+    gulfExp: "No",
+    degree: "Sr. Electrical Tech",
+    indExp: "11 Yrs",
+    control: "Excellent",
+    mechanics: "Medium",
+    welding: "Not Mentioned",
+    handsOn: 7,
+    final: 6.5,
+    status: "Backup"
+  },
+  {
+    id: 5,
+    name: "Gopal Rajbhar",
+    country: "India",
+    age: 32,
+    maritalStatus: "Married",
+    prevCompany: "Mazagon Dock",
+    gulfExp: "No",
+    degree: "ITI (Electrical Tech)",
+    indExp: "11 Yrs",
+    control: "Very Good",
+    mechanics: "Poor",
+    welding: "Not Mentioned",
+    handsOn: 6,
+    final: 5,
+    status: "Rejected"
+  },
+  {
+    id: 6,
+    name: "Salim Nadaf",
+    country: "India",
+    age: 34,
+    maritalStatus: "Married",
+    prevCompany: "Kompress India Ltd",
+    gulfExp: "No (SE Asia)",
+    degree: "ITI (Incomplete)",
+    indExp: "10+ Yrs",
+    control: "Poor",
+    mechanics: "Excellent",
+    welding: "Experienced",
+    handsOn: 8,
+    final: 5,
+    status: "Rejected"
+  },
+  {
+    id: 7,
+    name: "Naveen Sharma",
+    country: "India",
+    age: 24,
+    maritalStatus: "Single",
+    prevCompany: "Jupiter Aluminium",
+    gulfExp: "No",
+    degree: "Diploma (Asst Eng)",
+    indExp: "3.5 Yrs",
+    control: "Medium",
+    mechanics: "Medium",
+    welding: "Not Mentioned",
+    handsOn: 5,
+    final: 4,
+    status: "Rejected"
+  },
+  {
+    id: 8,
+    name: "Shaik Soharab",
+    country: "India",
+    age: 30,
+    maritalStatus: "Single",
+    prevCompany: "L&T / PRIDE Dubai",
+    gulfExp: "No",
+    degree: "Electrician",
+    indExp: "5 Yrs",
+    control: "Medium",
+    mechanics: "None",
+    welding: "Not Mentioned",
+    handsOn: 3,
+    final: 3,
+    status: "Rejected"
+  },
+  {
+    id: 9,
+    name: "Mohammed Mujeeb",
+    country: "India",
+    age: 23,
+    maritalStatus: "Single",
+    prevCompany: "Maruti Suzuki",
+    gulfExp: "No",
+    degree: "ITI (Auto Mechanic)",
+    indExp: "3 Yrs",
+    control: "Poor",
+    mechanics: "Poor",
+    welding: "Not Mentioned",
+    handsOn: 1,
+    final: 1,
+    status: "Rejected"
+  },
+  {
+    id: 10,
+    name: "Nashad P",
+    country: "India",
+    age: 28,
+    maritalStatus: "Single",
+    prevCompany: "Various Contracting",
+    gulfExp: "No",
+    degree: "Electrician",
+    indExp: "4 Yrs",
+    control: "Poor",
+    mechanics: "None",
+    welding: "Not Mentioned",
+    handsOn: 1,
+    final: 1,
+    status: "Rejected"
+  }
+];
+
+// --- COMPONENTS ---
+
+const ScoreBar = ({ score, max = 10 }) => {
+  const percentage = (score / max) * 100;
+  let colorClass = "bg-red-500";
+  if (score >= 8) colorClass = "bg-green-500";
+  else if (score >= 6) colorClass = "bg-yellow-500";
+  else if (score >= 4) colorClass = "bg-orange-500";
+
+  return (
+    <div className="flex items-center gap-2">
+      <div className="w-24 h-2.5 bg-gray-200 rounded-full overflow-hidden">
+        <div 
+          className={`h-full ${colorClass} transition-all duration-500`} 
+          style={{ width: `${percentage}%` }}
+        />
+      </div>
+      <span className="text-sm font-bold text-gray-700 w-8">{score}/10</span>
+    </div>
+  );
+};
+
+const SkillBadge = ({ skill }) => {
+  const styles = {
+    "Excellent": "bg-green-100 text-green-800 border-green-200",
+    "Very Good": "bg-green-50 text-green-700 border-green-100",
+    "Medium": "bg-yellow-100 text-yellow-800 border-yellow-200",
+    "Poor": "bg-red-100 text-red-800 border-red-200",
+    "None": "bg-gray-100 text-gray-600 border-gray-200",
+    "Experienced": "bg-blue-100 text-blue-800 border-blue-200",
+    "Not Mentioned": "bg-slate-100 text-slate-500 border-slate-200 text-[10px]",
+  };
+  
+  const defaultStyle = "bg-gray-100 text-gray-800 border-gray-200";
+  
+  return (
+    <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${styles[skill] || defaultStyle}`}>
+      {skill}
+    </span>
+  );
+};
+
+export default function Dashboard() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredCandidates = candidates.filter(c => 
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    c.status.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans">
+      {/* Header */}
+      <header className="bg-slate-900 text-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Zap className="text-white" size={24} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">Pallettoo Factory</h1>
+              <p className="text-slate-400 text-sm">Electromechanical Tech Recruitment Dashboard</p>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center gap-4">
+            <div className="text-right">
+              <p className="text-sm text-slate-400">Prepared By</p>
+              <p className="font-semibold">Zakaria Cheloufi</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Executive Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex items-center gap-4">
+            <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">
+              <Users size={24} />
+            </div>
+            <div>
+              <p className="text-sm text-slate-500 font-medium">Total Reviewed</p>
+              <h2 className="text-2xl font-bold text-slate-800">10</h2>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex items-center gap-4">
+            <div className="p-3 bg-green-50 text-green-600 rounded-lg">
+              <Award size={24} />
+            </div>
+            <div>
+              <p className="text-sm text-slate-500 font-medium">Shortlisted for Interview</p>
+              <h2 className="text-2xl font-bold text-green-600">2</h2>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex items-center gap-4">
+            <div className="p-3 bg-purple-50 text-purple-600 rounded-lg">
+              <Globe size={24} />
+            </div>
+            <div>
+              <p className="text-sm text-slate-500 font-medium">With Gulf Experience</p>
+              <h2 className="text-2xl font-bold text-slate-800">1</h2>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex items-center gap-4">
+            <div className="p-3 bg-orange-50 text-orange-600 rounded-lg">
+              <AlertCircle size={24} />
+            </div>
+            <div>
+              <p className="text-sm text-slate-500 font-medium">Rejected (Not Match)</p>
+              <h2 className="text-2xl font-bold text-slate-800">6</h2>
+            </div>
+          </div>
+        </div>
+
+        {/* Table Section */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+          <div className="p-5 border-b border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+              <Wrench className="text-slate-400" size={20} />
+              Comprehensive Evaluation Matrix
+            </h2>
+            <div className="relative w-full sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <input 
+                type="text" 
+                placeholder="Search candidates..." 
+                className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[1100px]">
+              <thead>
+                <tr className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                  <th className="p-4 font-semibold border-b border-slate-200">Candidate Profile</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Background</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Control & Panels</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Mech & Pneumatics</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Welding Skills</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Hands-on Score</th>
+                  <th className="p-4 font-semibold border-b border-slate-200">Final Score</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {filteredCandidates.map((candidate) => (
+                  <tr 
+                    key={candidate.id} 
+                    className={`hover:bg-slate-50 transition-colors ${candidate.status === 'Shortlisted' ? 'bg-blue-50/30' : ''}`}
+                  >
+                    <td className="p-4">
+                      <div className="flex flex-col">
+                        <span className="font-bold text-slate-900 flex items-center gap-2">
+                          {candidate.name}
+                          {candidate.status === "Shortlisted" && (
+                            <span className="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-bold">Top Pick</span>
+                          )}
+                        </span>
+                        <span className="text-xs text-slate-500 mt-1">{candidate.degree}</span>
+                        <div className="flex gap-2 mt-1.5">
+                          <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200">{candidate.age} Yrs</span>
+                          <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200">{candidate.maritalStatus}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="flex flex-col gap-1.5 text-sm">
+                        <span className="font-semibold text-slate-700 flex items-center gap-1">
+                          {candidate.indExp} <span className="text-[10px] text-slate-400 font-normal uppercase">Total Exp</span>
+                        </span>
+                        <span className="text-xs text-slate-600 truncate max-w-[180px]" title={candidate.prevCompany}>
+                          🏢 {candidate.prevCompany}
+                        </span>
+                        {candidate.gulfExp.includes("Yes") ? (
+                          <span className="text-xs text-emerald-600 font-medium flex items-center gap-1"><CheckCircle2 size={12}/> Gulf: {candidate.gulfExp}</span>
+                        ) : (
+                          <span className="text-xs text-slate-400">No Gulf Exp</span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <SkillBadge skill={candidate.control} />
+                    </td>
+                    <td className="p-4">
+                      <SkillBadge skill={candidate.mechanics} />
+                    </td>
+                    <td className="p-4">
+                      <SkillBadge skill={candidate.welding} />
+                    </td>
+                    <td className="p-4">
+                      <ScoreBar score={candidate.handsOn} />
+                    </td>
+                    <td className="p-4">
+                      <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold text-white shadow-sm
+                          ${candidate.final >= 8 ? 'bg-emerald-500' : 
+                            candidate.final >= 6 ? 'bg-blue-500' : 
+                            candidate.final >= 4 ? 'bg-amber-500' : 'bg-red-500'}`}
+                        >
+                          {candidate.final}
+                        </div>
+                        {candidate.status === "Rejected" && <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-1 rounded">Rejected</span>}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {filteredCandidates.length === 0 && (
+            <div className="p-8 text-center text-slate-500">
+              No candidates found matching your search.
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+
+
+
