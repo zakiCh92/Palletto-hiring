@@ -35,16 +35,17 @@
         };
 
         const candidates = [
-            { id: 1, name: "Bhuvaneswaran T", age: 25, maritalStatus: "Single", prevCompany: "Texmo Industries", gulfExp: "No", degree: "Diploma (Mechatronics)", indExp: "3+ Yrs", control: "Excellent", mechanics: "Excellent", welding: "Not Mentioned", handsOn: 9, final: 9, status: "Shortlisted" },
-            { id: 2, name: "Mohammad Ashfaque", age: 37, maritalStatus: "Married", prevCompany: "Al Watania Plastics", gulfExp: "Yes (KSA)", degree: "Technical (Electrical)", indExp: "12+ Yrs", control: "Excellent", mechanics: "Very Good", welding: "Not Mentioned", handsOn: 8.5, final: 8, status: "Shortlisted" },
-            { id: 3, name: "Affan ME", age: 25, maritalStatus: "Single", prevCompany: "Toyota Industries", gulfExp: "No", degree: "ITI (Trainee Maint.)", indExp: "2 Yrs", control: "Excellent", mechanics: "Medium", welding: "Not Mentioned", handsOn: 7, final: 6.5, status: "Backup" },
-            { id: 4, name: "Asif Pasha", age: 35, maritalStatus: "Married", prevCompany: "Bonn Nutrients", gulfExp: "No", degree: "Sr. Electrical Tech", indExp: "11 Yrs", control: "Excellent", mechanics: "Medium", welding: "Not Mentioned", handsOn: 7, final: 6.5, status: "Backup" },
-            { id: 5, name: "Gopal Rajbhar", age: 32, maritalStatus: "Married", prevCompany: "Mazagon Dock", gulfExp: "No", degree: "ITI (Electrical Tech)", indExp: "11 Yrs", control: "Very Good", mechanics: "Poor", welding: "Not Mentioned", handsOn: 6, final: 5, status: "Rejected" },
-            { id: 6, name: "Salim Nadaf", age: 34, maritalStatus: "Married", prevCompany: "Kompress India Ltd", gulfExp: "No (SE Asia)", degree: "ITI (Incomplete)", indExp: "10+ Yrs", control: "Poor", mechanics: "Excellent", welding: "Experienced", handsOn: 8, final: 5, status: "Rejected" },
-            { id: 7, name: "Naveen Sharma", age: 24, maritalStatus: "Single", prevCompany: "Jupiter Aluminium", gulfExp: "No", degree: "Diploma (Asst Eng)", indExp: "3.5 Yrs", control: "Medium", mechanics: "Medium", welding: "Not Mentioned", handsOn: 5, final: 4, status: "Rejected" },
-            { id: 8, name: "Shaik Soharab", age: 30, maritalStatus: "Single", prevCompany: "L&T / PRIDE Dubai", gulfExp: "No", degree: "Electrician", indExp: "5 Yrs", control: "Medium", mechanics: "None", welding: "Not Mentioned", handsOn: 3, final: 3, status: "Rejected" },
-            { id: 9, name: "Mohammed Mujeeb", age: 23, maritalStatus: "Single", prevCompany: "Maruti Suzuki", gulfExp: "No", degree: "ITI (Auto Mechanic)", indExp: "3 Yrs", control: "Poor", mechanics: "Poor", welding: "Not Mentioned", handsOn: 1, final: 1, status: "Rejected" },
-            { id: 10, name: "Nashad P", age: 28, maritalStatus: "Single", prevCompany: "Various Contracting", gulfExp: "No", degree: "Electrician", indExp: "4 Yrs", control: "Poor", mechanics: "None", welding: "Not Mentioned", handsOn: 1, final: 1, status: "Rejected" }
+            { id: 1, name: "Bhuvaneswaran T", country: "India", age: 25, maritalStatus: "Single", prevCompany: "Texmo Industries", gulfExp: "No", degree: "Diploma (Mechatronics)", indExp: "3+ Yrs", control: "Excellent", mechanics: "Excellent", welding: "Not Mentioned", handsOn: 9, final: 9, status: "Shortlisted" },
+            { id: 2, name: "Mohammad Ashfaque", country: "India", age: 37, maritalStatus: "Married", prevCompany: "Al Watania Plastics", gulfExp: "Yes (KSA)", degree: "Technical (Electrical)", indExp: "12+ Yrs", control: "Excellent", mechanics: "Very Good", welding: "Not Mentioned", handsOn: 8.5, final: 8, status: "Shortlisted" },
+            { id: 11, name: "Sunil Kumar", country: "India", age: 29, maritalStatus: "Single", prevCompany: "Nigeria Site Projects", gulfExp: "Yes (International)", degree: "ITI (Electrician)", indExp: "11 Yrs", control: "Good", mechanics: "Poor", welding: "Not Mentioned", handsOn: 7.5, final: 6.5, status: "Backup" },
+            { id: 3, name: "Affan ME", country: "India", age: 25, maritalStatus: "Single", prevCompany: "Toyota Industries", gulfExp: "No", degree: "ITI (Trainee Maint.)", indExp: "2 Yrs", control: "Excellent", mechanics: "Medium", welding: "Not Mentioned", handsOn: 7, final: 6.5, status: "Backup" },
+            { id: 4, name: "Asif Pasha", country: "India", age: 35, maritalStatus: "Married", prevCompany: "Bonn Nutrients", gulfExp: "No", degree: "Sr. Electrical Tech", indExp: "11 Yrs", control: "Excellent", mechanics: "Medium", welding: "Not Mentioned", handsOn: 7, final: 6.5, status: "Backup" },
+            { id: 5, name: "Gopal Rajbhar", country: "India", age: 32, maritalStatus: "Married", prevCompany: "Mazagon Dock", gulfExp: "No", degree: "ITI (Electrical Tech)", indExp: "11 Yrs", control: "Very Good", mechanics: "Poor", welding: "Not Mentioned", handsOn: 6, final: 5, status: "Rejected" },
+            { id: 6, name: "Salim Nadaf", country: "India", age: 34, maritalStatus: "Married", prevCompany: "Kompress India Ltd", gulfExp: "No (SE Asia)", degree: "ITI (Incomplete)", indExp: "10+ Yrs", control: "Poor", mechanics: "Excellent", welding: "Experienced", handsOn: 8, final: 5, status: "Rejected" },
+            { id: 7, name: "Naveen Sharma", country: "India", age: 24, maritalStatus: "Single", prevCompany: "Jupiter Aluminium", gulfExp: "No", degree: "Diploma (Asst Eng)", indExp: "3.5 Yrs", control: "Medium", mechanics: "Medium", welding: "Not Mentioned", handsOn: 5, final: 4, status: "Rejected" },
+            { id: 8, name: "Shaik Soharab", country: "India", age: 30, maritalStatus: "Single", prevCompany: "L&T / PRIDE Dubai", gulfExp: "No", degree: "Electrician", indExp: "5 Yrs", control: "Medium", mechanics: "None", welding: "Not Mentioned", handsOn: 3, final: 3, status: "Rejected" },
+            { id: 9, name: "Mohammed Mujeeb", country: "India", age: 23, maritalStatus: "Single", prevCompany: "Maruti Suzuki", gulfExp: "No", degree: "ITI (Auto Mechanic)", indExp: "3 Yrs", control: "Poor", mechanics: "Poor", welding: "Not Mentioned", handsOn: 1, final: 1, status: "Rejected" },
+            { id: 10, name: "Nashad P", country: "India", age: 28, maritalStatus: "Single", prevCompany: "Various Contracting", gulfExp: "No", degree: "Electrician", indExp: "4 Yrs", control: "Poor", mechanics: "None", welding: "Not Mentioned", handsOn: 1, final: 1, status: "Rejected" }
         ];
 
         const jobRequirements = [
@@ -75,6 +76,7 @@
                 const colors = {
                     "Excellent": "bg-emerald-50 text-emerald-700 border-emerald-100",
                     "Very Good": "bg-teal-50 text-teal-700 border-teal-100",
+                    "Good": "bg-blue-50 text-blue-700 border-blue-100",
                     "Medium": "bg-amber-50 text-amber-700 border-amber-100",
                     "Poor": "bg-rose-50 text-rose-700 border-rose-100",
                     "Experienced": "bg-sky-50 text-sky-700 border-sky-100"
@@ -117,10 +119,10 @@
                         {/* Summary Statistics Cards */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                             {[
-                                { label: "Total Pool", val: "10", icon: <Icons.Users />, col: "blue" },
+                                { label: "Total Pool", val: "11", icon: <Icons.Users />, col: "blue" },
                                 { label: "Shortlisted", val: "02", icon: <Icons.Award />, col: "emerald" },
-                                { label: "Gulf Experience", val: "01", icon: <Icons.Globe />, col: "indigo" },
-                                { label: "Rejected", val: "06", icon: <Icons.Alert />, col: "rose" }
+                                { label: "Global Exp.", val: "02", icon: <Icons.Globe />, col: "indigo" },
+                                { label: "Rejected", val: "07", icon: <Icons.Alert />, col: "rose" }
                             ].map((item, i) => (
                                 <div key={i} className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-4 transition-transform hover:scale-[1.02]">
                                     <div className={`p-3.5 bg-${item.col === 'rose' ? 'red' : item.col}-50 text-${item.col === 'rose' ? 'red' : item.col}-600 rounded-2xl`}>
@@ -181,7 +183,7 @@
                                                     <div className="flex flex-col gap-1.5">
                                                         <span className="text-xs font-black text-slate-800">{c.indExp}</span>
                                                         <span className="text-[10px] text-slate-500 font-bold flex items-center gap-1.5 uppercase">🏢 {c.prevCompany}</span>
-                                                        {c.gulfExp.includes("Yes") && <span className="text-[10px] text-emerald-600 font-black uppercase flex items-center gap-1 mt-1">🇸🇦 {c.gulfExp}</span>}
+                                                        {c.gulfExp.includes("Yes") && <span className="text-[10px] text-emerald-600 font-black uppercase flex items-center gap-1 mt-1">🌍 {c.gulfExp}</span>}
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-6 text-center"><div className="flex justify-center"><Badge text={c.control} /></div></td>
