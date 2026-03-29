@@ -36,6 +36,8 @@
 
         const candidates = [
             { id: 1, name: "Bhuvaneswaran T", country: "India", age: 25, maritalStatus: "Single", prevCompany: "Texmo Industries", gulfExp: "No", degree: "Diploma (Mechatronics)", indExp: "3+ Yrs", control: "Excellent", mechanics: "Excellent", welding: "Not Mentioned", handsOn: 9, final: 9, status: "Shortlisted" },
+            { id: 13, name: "Mohammad Arif Sultan", country: "India", age: 32, maritalStatus: "Married", prevCompany: "Al-Ajmi Corp (KSA)", gulfExp: "Yes (KSA)", degree: "ITI (Electrician)", indExp: "11 Yrs", control: "Excellent", mechanics: "Good", welding: "Not Mentioned", handsOn: 8.5, final: 8, status: "Shortlisted" },
+            { id: 12, name: "Afzal Imam", country: "India", age: 33, maritalStatus: "Married", prevCompany: "Al-Kifah Readymix (KSA)", gulfExp: "Yes (KSA)", degree: "ITI (Electrician)", indExp: "14 Yrs", control: "Excellent", mechanics: "Good", welding: "Not Mentioned", handsOn: 8.5, final: 8, status: "Shortlisted" },
             { id: 2, name: "Mohammad Ashfaque", country: "India", age: 37, maritalStatus: "Married", prevCompany: "Al Watania Plastics", gulfExp: "Yes (KSA)", degree: "Technical (Electrical)", indExp: "12+ Yrs", control: "Excellent", mechanics: "Very Good", welding: "Not Mentioned", handsOn: 8.5, final: 8, status: "Shortlisted" },
             { id: 11, name: "Sunil Kumar", country: "India", age: 29, maritalStatus: "Single", prevCompany: "Nigeria Site Projects", gulfExp: "Yes (International)", degree: "ITI (Electrician)", indExp: "11 Yrs", control: "Good", mechanics: "Poor", welding: "Not Mentioned", handsOn: 7.5, final: 6.5, status: "Backup" },
             { id: 3, name: "Affan ME", country: "India", age: 25, maritalStatus: "Single", prevCompany: "Toyota Industries", gulfExp: "No", degree: "ITI (Trainee Maint.)", indExp: "2 Yrs", control: "Excellent", mechanics: "Medium", welding: "Not Mentioned", handsOn: 7, final: 6.5, status: "Backup" },
@@ -84,9 +86,10 @@
                 return <div className={`px-2 py-0.5 text-[9px] font-bold uppercase rounded border ${colors[text] || "bg-slate-50 text-slate-400 border-slate-200 italic"}`}>{text}</div>;
             };
 
+            const filtered = candidates.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase()) || c.prevCompany.toLowerCase().includes(searchTerm.toLowerCase()));
+
             return (
                 <div className="flex flex-col min-h-screen">
-                    {/* Header */}
                     <nav className="bg-slate-900 text-white p-6 shadow-2xl">
                         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-4">
@@ -119,10 +122,10 @@
                         {/* Summary Statistics Cards */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                             {[
-                                { label: "Total Pool", val: "11", icon: <Icons.Users />, col: "blue" },
-                                { label: "Shortlisted", val: "02", icon: <Icons.Award />, col: "emerald" },
-                                { label: "Global Exp.", val: "02", icon: <Icons.Globe />, col: "indigo" },
-                                { label: "Rejected", val: "07", icon: <Icons.Alert />, col: "rose" }
+                                { label: "Total Pool", val: "13", icon: <Icons.Users />, col: "blue" },
+                                { label: "Shortlisted", val: "04", icon: <Icons.Award />, col: "emerald" },
+                                { label: "Global Exp.", val: "04", icon: <Icons.Globe />, col: "indigo" },
+                                { label: "Rejected", val: "06", icon: <Icons.Alert />, col: "rose" }
                             ].map((item, i) => (
                                 <div key={i} className="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-4 transition-transform hover:scale-[1.02]">
                                     <div className={`p-3.5 bg-${item.col === 'rose' ? 'red' : item.col}-50 text-${item.col === 'rose' ? 'red' : item.col}-600 rounded-2xl`}>
@@ -167,7 +170,7 @@
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-50">
-                                        {candidates.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase())).map(c => (
+                                        {filtered.map(c => (
                                             <tr key={c.id} className={`hover:bg-slate-50/50 transition-colors ${c.status === 'Shortlisted' ? 'bg-indigo-50/40' : ''}`}>
                                                 <td className="px-8 py-6">
                                                     <div className="flex flex-col">
@@ -204,7 +207,6 @@
                         </div>
                     </main>
 
-                    {/* Footer */}
                     <footer className="bg-white border-t border-slate-100 py-16">
                         <div className="max-w-7xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row items-center justify-between bg-slate-900 rounded-[3rem] p-10 shadow-2xl relative overflow-hidden border-b-8 border-indigo-600">
