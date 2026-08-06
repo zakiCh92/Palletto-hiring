@@ -18,9 +18,6 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .toggle-checkbox:checked { right: 0; border-color: #68D391; }
-        .toggle-checkbox:checked + .toggle-label { background-color: #68D391; }
-        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
         
         @media print {
             body { background: white !important; padding: 0 !important; }
@@ -35,9 +32,9 @@
     
     <div class="max-w-6xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 print-hidden">
         <div>
-            <h1 class="text-3xl font-black text-slate-900 flex items-center gap-3">
+            <h1 class="text-3xl font-black text-slate-900 flex items-center gap-3 tracking-tight">
                 <i class="fa-solid fa-calculator text-blue-600"></i>
-                Pressed Blocks Costing System <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full ml-2">v4.0 Pure JS</span>
+                Pressed Blocks Costing System
             </h1>
             <p class="text-slate-500 mt-2 font-medium">Advanced production cost calculator with precise unit economics</p>
         </div>
@@ -92,7 +89,6 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Labor -->
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-16 flex-shrink-0 flex justify-center mt-2 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg ring-4 ring-white shadow-sm">2</div>
@@ -109,7 +105,6 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Spares (Saw Disk) -->
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-16 flex-shrink-0 flex justify-center mt-2 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-lg ring-4 ring-white shadow-sm">3</div>
@@ -126,7 +121,6 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Energy -->
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-16 flex-shrink-0 flex justify-center mt-2 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-lg ring-4 ring-white shadow-sm">4</div>
@@ -144,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- Step 5: Facility -->
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-16 flex-shrink-0 flex justify-center mt-2 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-lg ring-4 ring-white shadow-sm">5</div>
@@ -161,7 +154,6 @@
                     </div>
                 </div>
 
-                <!-- Step 6: Packaging -->
                 <div class="flex flex-col md:flex-row gap-6 pb-8">
                     <div class="md:w-16 flex-shrink-0 flex justify-center mt-2 hidden md:flex">
                         <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg ring-4 ring-white shadow-sm">6</div>
@@ -181,13 +173,8 @@
             </div>
         </div>
 
-        <!-- Product Templates will be injected here by JS -->
         <div id="products-container"></div>
         
-    </div>
-
-    <div class="max-w-6xl mx-auto mt-16 pb-8 text-center text-slate-400 text-xs font-medium print-hidden">
-        <p>Custom Production Cost Calculation System • Pure JS Architecture v4.0</p>
     </div>
 
     <script>
@@ -199,7 +186,6 @@
             { id: 'p140', name: 'Block 95x95x140', glue: 0.252, powder: 0.298, chopped: 0.221, prod: 1700, bundle: 1200 }
         ];
 
-        // UI Builder for Products
         function buildProducts() {
             const container = document.getElementById('products-container');
             let html = '';
@@ -237,6 +223,8 @@
                                     <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50"><p class="text-slate-400 text-xs mb-1 uppercase font-semibold">Materials</p><p class="text-xl font-bold"><span id="out_mat_${p.id}">0.0000</span> <span class="text-xs font-normal text-slate-500">SAR</span></p></div>
                                     <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50"><p class="text-slate-400 text-xs mb-1 uppercase font-semibold">Labor</p><p class="text-xl font-bold"><span id="out_lab_${p.id}">0.0000</span> <span class="text-xs font-normal text-slate-500">SAR</span></p></div>
                                     <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50"><p class="text-slate-400 text-xs mb-1 uppercase font-semibold">Energy</p><p class="text-xl font-bold text-amber-400"><span id="out_ene_${p.id}">0.0000</span> <span class="text-xs font-normal text-amber-600">SAR</span></p></div>
+                                    
+                                    <!-- Toggleable Cards -->
                                     <div id="card_spares_${p.id}" class="bg-slate-800/80 p-4 rounded-xl border border-rose-900/40"><p class="text-rose-300 text-xs mb-1 uppercase font-semibold">Spares</p><p class="text-xl font-bold text-rose-400"><span id="out_spa_${p.id}">0.0000</span> <span class="text-xs font-normal text-rose-600">SAR</span></p></div>
                                     <div id="card_facility_${p.id}" class="hidden bg-slate-800/80 p-4 rounded-xl border border-indigo-900/40"><p class="text-indigo-300 text-xs mb-1 uppercase font-semibold">Facility</p><p class="text-xl font-bold text-indigo-400"><span id="out_fac_${p.id}">0.0000</span> <span class="text-xs font-normal text-indigo-600">SAR</span></p></div>
                                     <div id="card_packaging_${p.id}" class="hidden bg-slate-800/80 p-4 rounded-xl border border-purple-900/40"><p class="text-purple-300 text-xs mb-1 uppercase font-semibold">Packaging</p><p class="text-xl font-bold text-purple-400"><span id="out_pac_${p.id}">0.0000</span> <span class="text-xs font-normal text-purple-600">SAR</span></p></div>
@@ -378,7 +366,6 @@
             calculate();
         }
 
-        // Initialize
         buildProducts();
         document.querySelectorAll('.app-input').forEach(input => {
             input.addEventListener('input', calculate);
