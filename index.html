@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pressed Wood Blocks Costing System v2</title>
+    <title>Pressed Wood Blocks Costing System v2.1</title>
     
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -39,7 +39,7 @@
             <div>
                 <h1 class="text-3xl font-black text-slate-900 flex items-center gap-3 tracking-tight">
                     <i class="fa-solid fa-calculator text-blue-600"></i>
-                    Pressed Blocks Costing <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-lg ml-2">v2.0</span>
+                    Pressed Blocks Costing <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-lg ml-2">v2.1</span>
                 </h1>
                 <p class="text-slate-500 mt-2 font-medium">Advanced production cost calculator with precise unit economics</p>
             </div>
@@ -52,7 +52,7 @@
         <!-- Print Header -->
         <div class="max-w-6xl mx-auto hidden print:block mb-8 border-b-2 border-slate-900 pb-4">
             <h1 class="text-3xl font-black text-slate-900">Detailed Production Cost Report</h1>
-            <p class="text-slate-500">Date Generated: {{ new Date().toLocaleDateString() }}</p>
+            <p class="text-slate-500">Date Generated: [[ new Date().toLocaleDateString() ]]</p>
         </div>
 
         <div class="max-w-6xl mx-auto">
@@ -81,23 +81,23 @@
                     <div class="flex flex-wrap gap-4 border p-4 rounded-lg">
                         <div class="flex-1 min-w-[150px]">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Powder Cost (kg)</p>
-                            <p class="font-bold text-lg">{{ finalPowderCost.toFixed(4) }} SAR</p>
+                            <p class="font-bold text-lg">[[ finalPowderCost.toFixed(4) ]] SAR</p>
                         </div>
                         <div class="flex-1 min-w-[150px]">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Daily Labor</p>
-                            <p class="font-bold text-lg">{{ dailyLaborCost.toFixed(2) }} SAR</p>
+                            <p class="font-bold text-lg">[[ dailyLaborCost.toFixed(2) ]] SAR</p>
                         </div>
                         <div class="flex-1 min-w-[150px]">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Daily Energy</p>
-                            <p class="font-bold text-lg text-amber-700">{{ dailyEnergyCostInclVat.toFixed(2) }} SAR</p>
+                            <p class="font-bold text-lg text-amber-700">[[ dailyEnergyCostInclVat.toFixed(2) ]] SAR</p>
                         </div>
                         <div v-if="settings.includeSawDisk" class="flex-1 min-w-[150px]">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Disk Cost/Unit</p>
-                            <p class="font-bold text-lg text-rose-600">{{ sawDiskCostPerUnit.toFixed(4) }} SAR</p>
+                            <p class="font-bold text-lg text-rose-600">[[ sawDiskCostPerUnit.toFixed(4) ]] SAR</p>
                         </div>
                         <div v-if="settings.includeFacilityCosts" class="flex-1 min-w-[150px]">
                             <p class="text-xs text-gray-500 uppercase font-semibold">Daily Facility</p>
-                            <p class="font-bold text-lg text-indigo-700">{{ dailyFacilityCost.toFixed(2) }} SAR</p>
+                            <p class="font-bold text-lg text-indigo-700">[[ dailyFacilityCost.toFixed(2) ]] SAR</p>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="mt-4 px-4 py-3 bg-blue-50/50 border border-blue-100 rounded-lg flex justify-between items-center">
                                         <span class="text-sm text-blue-800 font-medium">Final Powder Cost:</span>
-                                        <span class="font-bold text-blue-900">{{ finalPowderCost.toFixed(4) }} SAR/kg</span>
+                                        <span class="font-bold text-blue-900">[[ finalPowderCost.toFixed(4) ]] SAR/kg</span>
                                     </div>
                                 </div>
                             </div>
@@ -187,8 +187,8 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 px-4 py-3 bg-emerald-50/50 border border-emerald-100 rounded-lg flex justify-between items-center">
-                                    <span class="text-sm text-emerald-800 font-medium">Daily Labor Cost ({{settings.workingDaysPerMonth}} days):</span>
-                                    <span class="font-bold text-emerald-900">{{ dailyLaborCost.toFixed(2) }} SAR</span>
+                                    <span class="text-sm text-emerald-800 font-medium">Daily Labor Cost ([[settings.workingDaysPerMonth]] days):</span>
+                                    <span class="font-bold text-emerald-900">[[ dailyLaborCost.toFixed(2) ]] SAR</span>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                                         :class="settings.includeSawDisk ? 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100' : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'"
                                         class="flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-colors border">
                                         <i :class="settings.includeSawDisk ? 'fa-toggle-on text-rose-500' : 'fa-toggle-off text-slate-400'" class="fa-solid text-2xl"></i>
-                                        {{ settings.includeSawDisk ? 'Enabled' : 'Disabled' }}
+                                        [[ settings.includeSawDisk ? 'Enabled' : 'Disabled' ]]
                                     </button>
                                 </div>
                                 <div :class="settings.includeSawDisk ? 'opacity-100' : 'opacity-40 pointer-events-none'" class="grid grid-cols-1 md:grid-cols-2 gap-4 transition-opacity">
@@ -229,7 +229,7 @@
                                 </div>
                                 <div v-if="settings.includeSawDisk" class="mt-4 px-4 py-3 bg-rose-50/50 border border-rose-100 rounded-lg flex justify-between items-center animate-fade-in">
                                     <span class="text-sm text-rose-800 font-medium">Disk Depreciation per Unit:</span>
-                                    <span class="font-bold text-rose-900">{{ sawDiskCostPerUnit.toFixed(4) }} SAR</span>
+                                    <span class="font-bold text-rose-900">[[ sawDiskCostPerUnit.toFixed(4) ]] SAR</span>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +265,7 @@
                                 </div>
                                 <div class="mt-4 px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-lg flex justify-between items-center">
                                     <span class="text-sm text-amber-800 font-medium">Total Daily Energy (Incl. VAT):</span>
-                                    <span class="font-bold text-amber-900">{{ dailyEnergyCostInclVat.toFixed(2) }} SAR</span>
+                                    <span class="font-bold text-amber-900">[[ dailyEnergyCostInclVat.toFixed(2) ]] SAR</span>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +291,7 @@
                                         :class="settings.includeFacilityCosts ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'"
                                         class="flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-colors border">
                                         <i :class="settings.includeFacilityCosts ? 'fa-toggle-on text-indigo-600' : 'fa-toggle-off text-slate-400'" class="fa-solid text-2xl"></i>
-                                        {{ settings.includeFacilityCosts ? 'Enabled' : 'Disabled' }}
+                                        [[ settings.includeFacilityCosts ? 'Enabled' : 'Disabled' ]]
                                     </button>
                                 </div>
                                 <div :class="settings.includeFacilityCosts ? 'opacity-100' : 'opacity-40 pointer-events-none'" class="grid grid-cols-1 md:grid-cols-2 gap-4 transition-opacity">
@@ -306,7 +306,7 @@
                                 </div>
                                 <div v-if="settings.includeFacilityCosts" class="mt-4 px-4 py-3 bg-indigo-50/50 border border-indigo-100 rounded-lg flex justify-between items-center animate-fade-in">
                                     <span class="text-sm text-indigo-800 font-medium">Daily Facility Overhead:</span>
-                                    <span class="font-bold text-indigo-900">{{ dailyFacilityCost.toFixed(2) }} SAR</span>
+                                    <span class="font-bold text-indigo-900">[[ dailyFacilityCost.toFixed(2) ]] SAR</span>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                                         :class="settings.includePackaging ? 'bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100' : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'"
                                         class="flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-colors border">
                                         <i :class="settings.includePackaging ? 'fa-toggle-on text-purple-600' : 'fa-toggle-off text-slate-400'" class="fa-solid text-2xl"></i>
-                                        {{ settings.includePackaging ? 'Enabled' : 'Disabled' }}
+                                        [[ settings.includePackaging ? 'Enabled' : 'Disabled' ]]
                                     </button>
                                 </div>
                                 <div :class="settings.includePackaging ? 'opacity-100' : 'opacity-40 pointer-events-none'" class="grid grid-cols-1 gap-4 transition-opacity max-w-sm">
@@ -406,34 +406,34 @@
                         <div class="lg:col-span-2 relative">
                             <div class="bg-slate-900 p-8 rounded-3xl shadow-xl text-white sticky top-6">
                                 <div class="mb-8 border-b border-slate-800 pb-4">
-                                    <h2 class="text-2xl font-bold text-white tracking-tight">{{ product.name }}</h2>
+                                    <h2 class="text-2xl font-bold text-white tracking-tight">[[ product.name ]]</h2>
                                     <p class="text-slate-400 text-sm mt-1">Cost Breakdown & Financial Analysis</p>
                                 </div>
                                 
                                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
                                     <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50">
                                         <p class="text-slate-400 text-xs mb-1 uppercase tracking-wider font-semibold">Materials</p>
-                                        <p class="text-xl font-bold">{{ materialCost(product).toFixed(4) }} <span class="text-xs font-normal text-slate-500">SAR</span></p>
+                                        <p class="text-xl font-bold">[[ materialCost(product).toFixed(4) ]] <span class="text-xs font-normal text-slate-500">SAR</span></p>
                                     </div>
                                     <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50">
                                         <p class="text-slate-400 text-xs mb-1 uppercase tracking-wider font-semibold">Labor</p>
-                                        <p class="text-xl font-bold">{{ laborCost(product).toFixed(4) }} <span class="text-xs font-normal text-slate-500">SAR</span></p>
+                                        <p class="text-xl font-bold">[[ laborCost(product).toFixed(4) ]] <span class="text-xs font-normal text-slate-500">SAR</span></p>
                                     </div>
                                     <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50">
                                         <p class="text-slate-400 text-xs mb-1 uppercase tracking-wider font-semibold">Energy</p>
-                                        <p class="text-xl font-bold text-amber-400">{{ energyCost(product).toFixed(4) }} <span class="text-xs font-normal text-amber-600">SAR</span></p>
+                                        <p class="text-xl font-bold text-amber-400">[[ energyCost(product).toFixed(4) ]] <span class="text-xs font-normal text-amber-600">SAR</span></p>
                                     </div>
                                     <div v-if="settings.includeSawDisk" class="bg-slate-800/80 p-4 rounded-2xl border border-rose-900/30 animate-fade-in">
                                         <p class="text-rose-300 text-xs mb-1 uppercase tracking-wider font-semibold">Spares</p>
-                                        <p class="text-xl font-bold text-rose-400">{{ sawDiskCostPerUnit.toFixed(4) }} <span class="text-xs font-normal text-rose-600">SAR</span></p>
+                                        <p class="text-xl font-bold text-rose-400">[[ sawDiskCostPerUnit.toFixed(4) ]] <span class="text-xs font-normal text-rose-600">SAR</span></p>
                                     </div>
                                     <div v-if="settings.includeFacilityCosts" class="bg-slate-800/80 p-4 rounded-2xl border border-indigo-900/30 animate-fade-in">
                                         <p class="text-indigo-300 text-xs mb-1 uppercase tracking-wider font-semibold">Facility</p>
-                                        <p class="text-xl font-bold text-indigo-400">{{ facilityCost(product).toFixed(4) }} <span class="text-xs font-normal text-indigo-600">SAR</span></p>
+                                        <p class="text-xl font-bold text-indigo-400">[[ facilityCost(product).toFixed(4) ]] <span class="text-xs font-normal text-indigo-600">SAR</span></p>
                                     </div>
                                     <div v-if="settings.includePackaging" class="bg-slate-800/80 p-4 rounded-2xl border border-purple-900/30 animate-fade-in">
                                         <p class="text-purple-300 text-xs mb-1 uppercase tracking-wider font-semibold">Packaging</p>
-                                        <p class="text-xl font-bold text-purple-400">{{ packagingCost(product).toFixed(4) }} <span class="text-xs font-normal text-purple-600">SAR</span></p>
+                                        <p class="text-xl font-bold text-purple-400">[[ packagingCost(product).toFixed(4) ]] <span class="text-xs font-normal text-purple-600">SAR</span></p>
                                     </div>
                                 </div>
 
@@ -441,7 +441,7 @@
                                     <div class="relative z-10">
                                         <p class="text-blue-100 text-xs mb-1 uppercase tracking-widest font-semibold">Total Cost per Unit</p>
                                         <div class="flex items-baseline gap-2">
-                                            <p class="text-5xl font-black">{{ totalCost(product).toFixed(4) }}</p>
+                                            <p class="text-5xl font-black">[[ totalCost(product).toFixed(4) ]]</p>
                                             <span class="text-xl font-medium text-blue-200">SAR</span>
                                         </div>
                                     </div>
@@ -451,15 +451,15 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="bg-slate-800/50 p-5 rounded-2xl flex justify-between items-center border border-slate-700/50">
                                         <div>
-                                            <p class="text-slate-400 text-xs uppercase tracking-wider mb-1 font-semibold">Bundle Cost ({{product.bundleSize}} units)</p>
-                                            <p class="text-xl font-bold text-emerald-400">{{ bundleCost(product).toFixed(2) }} <span class="text-sm font-normal text-emerald-600">SAR</span></p>
+                                            <p class="text-slate-400 text-xs uppercase tracking-wider mb-1 font-semibold">Bundle Cost ([[product.bundleSize]] units)</p>
+                                            <p class="text-xl font-bold text-emerald-400">[[ bundleCost(product).toFixed(2) ]] <span class="text-sm font-normal text-emerald-600">SAR</span></p>
                                         </div>
                                         <i class="fa-solid fa-box-open text-3xl text-slate-600"></i>
                                     </div>
                                     <div class="bg-slate-800/50 p-5 rounded-2xl flex justify-between items-center border border-slate-700/50">
                                         <div>
                                             <p class="text-slate-400 text-xs uppercase tracking-wider mb-1 font-semibold">Daily Production Cost</p>
-                                            <p class="text-xl font-bold text-white">{{ dailyCost(product).toFixed(2) }} <span class="text-sm font-normal text-slate-500">SAR</span></p>
+                                            <p class="text-xl font-bold text-white">[[ dailyCost(product).toFixed(2) ]] <span class="text-sm font-normal text-slate-500">SAR</span></p>
                                         </div>
                                         <i class="fa-solid fa-bolt text-3xl text-slate-600"></i>
                                     </div>
@@ -480,11 +480,14 @@
         </div>
     </div>
 
-    <!-- Vue 3 App Logic -->
     <script>
         const { createApp } = Vue;
 
         createApp({
+            // VERY IMPORTANT: Changes Vue delimiters from {{ }} to [[ ]] to prevent GitHub Pages (Jekyll) build crash
+            compilerOptions: {
+                delimiters: ['[[', ']]']
+            },
             data() {
                 return {
                     activeTab: 'settings',
