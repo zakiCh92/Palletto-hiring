@@ -22,7 +22,6 @@
     <script type="text/babel">
         const { useState } = React;
 
-        // Icons Component
         const Icons = {
             Zap: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>,
             Wrench: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.4a1 1 0 0 0 1.4 0l3.7-3.7a6 6 0 0 0-8.5-8.5l-3.7 3.7a1 1 0 0 0 0 1.4l1.4 1.6a1 1 0 0 0 1.4 0l3.7-3.7z"></path><path d="M11 11 2 20a2 2 0 0 0 3 3l9-9"></path></svg>,
@@ -33,10 +32,11 @@
             Search: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>,
             X: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>,
             ChevronRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>,
-            Briefcase: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            Briefcase: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>,
+            AlertCircle: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         };
 
-        // CANDIDATES DATA SPLIT BY TRACK
+        // ALL CANDIDATES INCLUDED (SHORTLISTED, BACKUP & REJECTED)
         const mechanicalCandidates = [
             { 
                 id: "M1", 
@@ -50,6 +50,7 @@
                 prevCompany: "ADNOC Ruwais / Al Jazeera Chem", 
                 score: 9.2, 
                 rank: 1,
+                evaluationStatus: "Shortlisted",
                 tag: "Top Pick - Mechanical",
                 primarySkills: ["Pump Overhauling", "Laser Alignment", "Compressors & Gearboxes", "Conveyor Belts", "Static & Rotary Equipment"],
                 highlights: "11+ years of heavy mechanical maintenance. Expert in overhaul of pumps, gearboxes, alignment (reverse dial & laser), and conveyor systems.",
@@ -62,6 +63,29 @@
             },
             { 
                 id: "M2", 
+                name: "P. Vimal", 
+                title: "Senior Mechanical Technician", 
+                totalExp: "15 Years", 
+                gulfExp: "Yes (Qatar, GASCO Abu Dhabi)", 
+                degree: "Diploma in Mechanical Eng. (First Class)", 
+                age: 43, 
+                status: "Single", 
+                prevCompany: "QAPCO Qatar / GASCO Habshan", 
+                score: 8.9, 
+                rank: 2,
+                evaluationStatus: "Shortlisted",
+                tag: "Heavy Rotating Expert",
+                primarySkills: ["Turbine & Compressor Overhaul", "Centrifugal Pumps", "Laser & Dial Alignment", "Fin-Fan Coolers", "P&ID Drawings"],
+                highlights: "15 years extensive experience in oil & gas and petrochemical plants. Master in pumps, turbines, gearboxes, and precision alignments.",
+                detailedExp: [
+                    "QAPCO Petrochemical Plant (Qatar) - Mechanical Tech & Lead",
+                    "GASCO Habshan (Abu Dhabi via Cegelec) - Mechanical Tech",
+                    "Shell QSGTL Refinery (Qatar) - Mechanical Technician",
+                    "ONGC Offshore (Mumbai) - Mechanical Technician"
+                ]
+            },
+            { 
+                id: "M3", 
                 name: "Anto Aswin Siluvairaj", 
                 title: "Millwright / Mechanical Technician", 
                 totalExp: "8+ Years", 
@@ -71,8 +95,9 @@
                 status: "Single", 
                 prevCompany: "Saudi Aramco / GAS Arabian", 
                 score: 8.8, 
-                rank: 2,
-                tag: "High Priority",
+                rank: 3,
+                evaluationStatus: "Shortlisted",
+                tag: "Aramco Certified",
                 primarySkills: ["Turbines & Compressors", "Hydraulic Pumps", "Laser Alignment", "Fin Fan Coolers", "Valves & Piping"],
                 highlights: "Proven track record in Saudi Aramco & SABIC facilities. Strong expertise in rotary machinery, optical alignment, and hydraulic systems.",
                 detailedExp: [
@@ -83,7 +108,29 @@
                 ]
             },
             { 
-                id: "M3", 
+                id: "M4", 
+                name: "Sathish S", 
+                title: "Mechanical Technician (Pump Specialist)", 
+                totalExp: "7+ Years", 
+                gulfExp: "Yes (Sherbiny KSA, Qatar)", 
+                degree: "Diploma in Mechanical Eng.", 
+                age: 27, 
+                status: "Single", 
+                prevCompany: "Sherbiny KSA / CPCL India", 
+                score: 8.6, 
+                rank: 4,
+                evaluationStatus: "Shortlisted",
+                tag: "Pump & Hydraulic Specialist",
+                primarySkills: ["Chemical Dosing Pumps", "Reciprocating & Gear Pumps", "Mechanical Seals", "Laser Alignment", "Compressors"],
+                highlights: "Specialist in pump overhauling, mechanical seals, and hydraulic systems with Sherbiny Saudi Arabia. Certified Overhead Crane Operator.",
+                detailedExp: [
+                    "Sherbiny (Saudi Arabia) - Mechanical Tech (Pump Specialist)",
+                    "CPCL Chennai Petroleum (India) - Mechanical Tech",
+                    "STAREF General Maintenance (Qatar) - Mechanical Tech"
+                ]
+            },
+            { 
+                id: "M5", 
                 name: "Mahamood Alam", 
                 title: "Senior Millwright / Mechanical Fitter", 
                 totalExp: "18+ Years", 
@@ -93,8 +140,9 @@
                 status: "Married", 
                 prevCompany: "Daeah E&C / Hyundai E&C", 
                 score: 8.5, 
-                rank: 3,
-                tag: "Experienced Fitter",
+                rank: 5,
+                evaluationStatus: "Shortlisted",
+                tag: "Senior Fitter",
                 primarySkills: ["Millwright Alignment", "Heavy Machinery Assembly", "Motor Pumps & Gearboxes", "Fabrication & Welding", "Commissioning"],
                 highlights: "Highly experienced millwright technician with 18+ years in heavy plant assembly, gearboxes, alignment, welding, and mechanical repairs.",
                 detailedExp: [
@@ -103,6 +151,85 @@
                     "Hyundai Engineering & Construction (UAE) - Millwright",
                     "ISCO (Kuwait National Petroleum Co.) - Mechanical Technician"
                 ]
+            },
+            { 
+                id: "M6", 
+                name: "Sikandar Perwez", 
+                title: "Mechanical Technician", 
+                totalExp: "9+ Years", 
+                gulfExp: "Yes (SRACO Dammam KSA)", 
+                degree: "10th Passed", 
+                age: 33, 
+                status: "Single", 
+                prevCompany: "SRACO Co. Dammam / Power Mech", 
+                score: 7.5, 
+                rank: 6,
+                evaluationStatus: "Backup",
+                tag: "Backup Candidate",
+                primarySkills: ["Heavy Machine Maintenance", "Compressors & Valves", "Centrifugal Pumps", "Heat Exchangers", "Preventive Maintenance"],
+                highlights: "9+ years experience in heavy machine maintenance, overhauling pumps, air compressors, and heat exchangers. 2.5 years in SRACO Dammam.",
+                detailedExp: [
+                    "SRACO Company (Dammam, KSA) - Mechanical Technician",
+                    "Power Mech Projects (India Power Plants) - Mechanical Tech",
+                    "Pranavam Constructions - Mechanical Technician"
+                ]
+            },
+            { 
+                id: "M7", 
+                name: "Angara Pavankumar", 
+                title: "Mechanical Maintenance Engineer", 
+                totalExp: "3 Years", 
+                gulfExp: "No (India Industrial)", 
+                degree: "Diploma in Mechanical Eng. (78.8%)", 
+                age: 23, 
+                status: "Single", 
+                prevCompany: "AM Green Ammonia / Burgoen Eng", 
+                score: 7.2, 
+                rank: 7,
+                evaluationStatus: "Backup",
+                tag: "Junior Backup",
+                primarySkills: ["Centrifugal & Gear Pumps", "Gearbox Overhaul", "Conveyor Belts", "Pneumatic/Hydraulic Systems", "Pulleys & Seals"],
+                highlights: "Young diploma mechanical engineer with solid hands-on experience in gearboxes, pumps, belt conveyors, and pneumatic/hydraulic systems.",
+                detailedExp: [
+                    "NFCL / AM Green Ammonia - Junior Engineer Mechanical",
+                    "Burgoen Engineering Pvt Ltd - Mechanical Maintenance Engineer"
+                ]
+            },
+            { 
+                id: "M8", 
+                name: "Salim Nadaf", 
+                title: "Mechanical Assembly Fitter", 
+                totalExp: "10+ Years", 
+                gulfExp: "No (SE Asia)", 
+                degree: "ITI (Incomplete)", 
+                age: 34, 
+                status: "Married", 
+                prevCompany: "Kompress India Ltd", 
+                score: 5.0, 
+                rank: 8,
+                evaluationStatus: "Rejected",
+                tag: "Rejected - No Electrical/Control",
+                primarySkills: ["Structure Welding", "Mechanical Fitting", "Assembly Work"],
+                highlights: "Strong welder and mechanical fitter, but lacks electrical control cabinet knowledge and automated line troubleshooting required.",
+                detailedExp: ["Kompress India Ltd - Assembly Fitter"]
+            },
+            { 
+                id: "M9", 
+                name: "Mohammed Mujeeb", 
+                title: "Auto Mechanic", 
+                totalExp: "3 Years", 
+                gulfExp: "No", 
+                degree: "ITI Auto Mechanic", 
+                age: 23, 
+                status: "Single", 
+                prevCompany: "Maruti Suzuki Workshop", 
+                score: 1.0, 
+                rank: 9,
+                evaluationStatus: "Rejected",
+                tag: "Rejected - Automotive Only",
+                primarySkills: ["Car Repair", "Automotive Engine"],
+                highlights: "Background exclusively in automotive repair workshops. Lacks industrial manufacturing line and plant equipment experience.",
+                detailedExp: ["Maruti Suzuki Workshop - Auto Mechanic"]
             }
         ];
 
@@ -119,6 +246,7 @@
                 prevCompany: "Makkah Cold Stores / ADNOC", 
                 score: 9.5, 
                 rank: 1,
+                evaluationStatus: "Shortlisted",
                 tag: "Top Pick - Leadership",
                 primarySkills: ["MCC/PCC Cabinets", "MV/LV Distribution", "PLC Systems Knowledge", "Motor Control", "SCE Registered"],
                 highlights: "Registered with Saudi Council of Engineers. 17+ years leading electrical maintenance in industrial plants, cold stores, and ADNOC oil facilities.",
@@ -131,6 +259,30 @@
             },
             { 
                 id: "E2", 
+                name: "Saiyed Alam", 
+                title: "Electrical Foreman / Senior Technician", 
+                totalExp: "27 Years", 
+                gulfExp: "Yes (Aramco, ADNOC, SK E&C, Hyundai)", 
+                degree: "ITI Electrical (NCVT 2001)", 
+                age: 48, 
+                status: "Married", 
+                prevCompany: "Aramco via Kabbani / SK E&C / Hyundai", 
+                score: 9.3, 
+                rank: 2,
+                evaluationStatus: "Shortlisted",
+                tag: "Foreman / Team Lead",
+                primarySkills: ["Team Leadership & Foreman", "Control Cabinet Wiring", "PLC Blueprints & Schematics", "3-Phase Motors & Switchgear", "LOTO & Safety"],
+                highlights: "27 years of comprehensive experience in KSA and Gulf. Held Electrical Foreman roles for Aramco, ADNOC, Riyadh Metro, and SK E&C.",
+                detailedExp: [
+                    "Isam Kabbani & Partners (Saudi Aramco Project) - Electrical Foreman",
+                    "SK Engineering & Construction (ADNOC Fujairah UAE) - Electrical Foreman",
+                    "Salini Impregilo (Riyadh Metro Line 3 KSA) - Electrical Foreman",
+                    "Hyundai KSA (Shuqaiq Steam Power Plant) - Electrical Foreman",
+                    "Al Kawther Tanks Factory (Al Hasa KSA) - Electrical Foreman"
+                ]
+            },
+            { 
+                id: "E3", 
                 name: "Asif Iqbal", 
                 title: "Sr. Electrical Maintenance Technician", 
                 totalExp: "14 Years", 
@@ -140,7 +292,8 @@
                 status: "Married", 
                 prevCompany: "GAS Arabian / Aramco Abqaiq", 
                 score: 9.1, 
-                rank: 2,
+                rank: 3,
+                evaluationStatus: "Shortlisted",
                 tag: "Senior Specialist",
                 primarySkills: ["Classic Control & VFDs", "MCC Panel Modification", "ATS & Generator Control", "Transformer & Switchgear", "Cable Termination"],
                 highlights: "13 years GCC experience including Aramco projects. Expert in industrial cable network, control panel troubleshooting, VFDs, and MCC wiring.",
@@ -152,7 +305,30 @@
                 ]
             },
             { 
-                id: "E3", 
+                id: "E4", 
+                name: "Pravej Alam", 
+                title: "Electrical Maintenance Technician", 
+                totalExp: "8+ Years", 
+                gulfExp: "Yes (SAAF Nonwovens KSA, SRACO)", 
+                degree: "Diploma in Electrical Eng. (2016)", 
+                age: 29, 
+                status: "Married", 
+                prevCompany: "SAAF Advanced Fabrics KSA / SAFCO", 
+                score: 8.7, 
+                rank: 4,
+                evaluationStatus: "Shortlisted",
+                tag: "Factory Automation Specialist",
+                primarySkills: ["PLC-Controlled Line Maintenance", "VFDs & Sensors", "Nonwoven/Packaging Plants", "Conveyors & Solenoid Valves", "Control Cabinet Wiring"],
+                highlights: "Direct 2-year experience in Saudi Advanced Fabrics Co (SAAF Al Ahsa) maintaining automated nonwoven production lines, VFDs, PLCs, and sensors.",
+                detailedExp: [
+                    "Advanced Fabrics Factory Co. SAAF (Al Ahsa KSA) - Electrical Tech",
+                    "Ktex Nonwoven Pvt. Ltd. - Electrical & Maintenance Technician",
+                    "SRACO / SAFCO Fertilizer (KSA) - Electrical Helper / Tech",
+                    "Toshi Automation Solutions - Site Supervisor Automation"
+                ]
+            },
+            { 
+                id: "E5", 
                 name: "Sreekumar P", 
                 title: "Electrical Technician / FMCG Specialist", 
                 totalExp: "10+ Years", 
@@ -161,8 +337,9 @@
                 age: 35, 
                 status: "Single", 
                 prevCompany: "Mercelys / BEC Oman", 
-                score: 8.7, 
-                rank: 3,
+                score: 8.6, 
+                rank: 5,
+                evaluationStatus: "Shortlisted",
                 tag: "Direct Factory Fit",
                 primarySkills: ["Automated Factory Machinery", "PLC Control Cabinets", "Wiring & Modifications", "Packaging Machinery", "LV Panels & DBs"],
                 highlights: "Direct hands-on experience in automated food/packaging production factories. Strong skills in machine electrical troubleshooting and PLC panel wiring.",
@@ -173,7 +350,7 @@
                 ]
             },
             { 
-                id: "E4", 
+                id: "E6", 
                 name: "Mohammad Sabbir", 
                 title: "Electrical Maintenance Technician", 
                 totalExp: "6.5 Years", 
@@ -183,8 +360,9 @@
                 status: "Single", 
                 prevCompany: "Al-Suwaidi / Aramco Petro Rabigh", 
                 score: 8.5, 
-                rank: 4,
-                tag: "Aramco Experienced",
+                rank: 6,
+                evaluationStatus: "Shortlisted",
+                tag: "Aramco Refineries Exp",
                 primarySkills: ["Star-Delta Motors", "MCC & PCC Panels", "VFD & Soft Starters", "HV/LV Breakers", "Cable Glanding"],
                 highlights: "5.5 years in Saudi Arabia refineries (Petro Rabigh). Proficient in motor starters, soft starters, MCC panel maintenance, and control wiring.",
                 detailedExp: [
@@ -194,7 +372,7 @@
                 ]
             },
             { 
-                id: "E5", 
+                id: "E7", 
                 name: "Mubarak Israil", 
                 title: "Electrical Maintenance Technician", 
                 totalExp: "8 Years", 
@@ -204,7 +382,8 @@
                 status: "Single", 
                 prevCompany: "Almoallam / Saudi Electricity Co.", 
                 score: 8.0, 
-                rank: 5,
+                rank: 7,
+                evaluationStatus: "Backup",
                 tag: "KSA Utility Exp",
                 primarySkills: ["Electrical Cabinets", "Working at Heights", "Cable Trunking", "Distribution Panels", "Site Wiring"],
                 highlights: "8 years GCC experience with certificates from Saudi Electricity Company (SEC) and Aramco contractor badges. Solid field electrician.",
@@ -215,7 +394,7 @@
                 ]
             },
             { 
-                id: "E6", 
+                id: "E8", 
                 name: "Safvan P A", 
                 title: "Automation & Instrumentation Technician", 
                 totalExp: "5 Years", 
@@ -225,8 +404,9 @@
                 status: "Single", 
                 prevCompany: "Motherson / First Solar", 
                 score: 7.8, 
-                rank: 6,
-                tag: "Automation Specialist",
+                rank: 8,
+                evaluationStatus: "Backup",
+                tag: "Automation Backup",
                 primarySkills: ["PLC Allen Bradley", "SCARA / Fanuc Robots", "Vision Systems & CCD", "Sensors & PID", "VFD Drives"],
                 highlights: "High-tech background in IPC-based automation, Allen Bradley PLCs, robotics, sensors, and vision systems. Ideal for advanced control systems.",
                 detailedExp: [
@@ -234,21 +414,85 @@
                     "First Solar India Pvt. Ltd. - Maintenance Technician",
                     "MRPL Desalination Plant - E&I Technician"
                 ]
+            },
+            { 
+                id: "E9", 
+                name: "Gopal Rajbhar", 
+                title: "Electrical Technician", 
+                totalExp: "11 Years", 
+                gulfExp: "No", 
+                degree: "ITI Electrical", 
+                age: 32, 
+                status: "Married", 
+                prevCompany: "Mazagon Dock / Sharad Insulation", 
+                score: 5.0, 
+                rank: 9,
+                evaluationStatus: "Rejected",
+                tag: "Rejected - Basic Wiring Only",
+                primarySkills: ["Cabinet Wiring", "MCC Cable Laying"],
+                highlights: "Good at MCC panel wiring and cable dressing, but completely lacks mechanical skills and automated line experience.",
+                detailedExp: ["Mazagon Dock Shipbuilders - Electrician"]
+            },
+            { 
+                id: "E10", 
+                name: "Shaik Soharab", 
+                title: "Electrician", 
+                totalExp: "5 Years", 
+                gulfExp: "No", 
+                degree: "Electrician ITI", 
+                age: 30, 
+                status: "Single", 
+                prevCompany: "L&T / PRIDE Dubai", 
+                score: 3.0, 
+                rank: 10,
+                evaluationStatus: "Rejected",
+                tag: "Rejected - Facility Building",
+                primarySkills: ["Building Wiring", "General Lighting"],
+                highlights: "Focused on building facilities and general maintenance. No experience in factory automated production lines.",
+                detailedExp: ["PRIDE Building Contracting - Industrial Electrician"]
+            },
+            { 
+                id: "E11", 
+                name: "Nashad P", 
+                title: "House Electrician", 
+                totalExp: "4 Years", 
+                gulfExp: "No", 
+                degree: "Electrician", 
+                age: 28, 
+                status: "Single", 
+                prevCompany: "Residential Contracting", 
+                score: 1.0, 
+                rank: 11,
+                evaluationStatus: "Rejected",
+                tag: "Rejected - House Wiring",
+                primarySkills: ["House Wiring", "Domestic Lighting"],
+                highlights: "Experience limited to residential house wiring. No industrial or factory qualifications.",
+                detailedExp: ["Various Contracting - House Electrician"]
             }
         ];
 
         function App() {
             const [activeTab, setActiveTab] = useState("mechanical");
+            const [statusFilter, setStatusFilter] = useState("ALL");
             const [searchTerm, setSearchTerm] = useState("");
             const [selectedCandidate, setSelectedCandidate] = useState(null);
 
             const currentList = activeTab === "mechanical" ? mechanicalCandidates : electricalCandidates;
             
-            const filteredCandidates = currentList.filter(c => 
-                c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                c.prevCompany.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                c.primarySkills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()))
-            );
+            const filteredCandidates = currentList.filter(c => {
+                const matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    c.prevCompany.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    c.primarySkills.some(s => s.toLowerCase().includes(searchTerm.toLowerCase()));
+                
+                const matchesStatus = statusFilter === "ALL" || c.evaluationStatus.toUpperCase() === statusFilter;
+                
+                return matchesSearch && matchesStatus;
+            });
+
+            // Count Stats
+            const shortlistedCount = currentList.filter(c => c.evaluationStatus === "Shortlisted").length;
+            const backupCount = currentList.filter(c => c.evaluationStatus === "Backup").length;
+            const rejectedCount = currentList.filter(c => c.evaluationStatus === "Rejected").length;
 
             return (
                 <div className="flex flex-col min-h-screen">
@@ -264,9 +508,9 @@
                                     <p className="text-xs font-bold text-indigo-300 tracking-[0.25em] uppercase mt-0.5">Pallettoo GOSN Industry Co. KSA</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700/60">
-                                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Dual Track Selection Active</span>
+                            <div className="flex items-center gap-3 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700/60">
+                                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Complete Pool View (Passed & Rejected)</span>
                             </div>
                         </div>
                     </header>
@@ -274,11 +518,11 @@
                     <main className="max-w-7xl mx-auto p-4 md:p-8 w-full flex-grow">
                         
                         {/* Track Selection Tabs */}
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-3 rounded-3xl border border-slate-200/80 shadow-sm">
-                            <div className="flex items-center gap-2 w-full sm:w-auto">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-white p-3 rounded-3xl border border-slate-200/80 shadow-sm">
+                            <div className="flex items-center gap-2 w-full md:w-auto">
                                 <button 
-                                    onClick={() => { setActiveTab("mechanical"); setSearchTerm(""); }}
-                                    className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${
+                                    onClick={() => { setActiveTab("mechanical"); setSearchTerm(""); setStatusFilter("ALL"); }}
+                                    className={`flex-1 md:flex-initial flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${
                                         activeTab === "mechanical" 
                                         ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200 border border-indigo-500" 
                                         : "text-slate-600 hover:bg-slate-100"
@@ -288,8 +532,8 @@
                                     Mechanical Track ({mechanicalCandidates.length})
                                 </button>
                                 <button 
-                                    onClick={() => { setActiveTab("electrical"); setSearchTerm(""); }}
-                                    className={`flex-1 sm:flex-initial flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${
+                                    onClick={() => { setActiveTab("electrical"); setSearchTerm(""); setStatusFilter("ALL"); }}
+                                    className={`flex-1 md:flex-initial flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-black text-sm uppercase tracking-wider transition-all ${
                                         activeTab === "electrical" 
                                         ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200 border border-indigo-500" 
                                         : "text-slate-600 hover:bg-slate-100"
@@ -300,12 +544,12 @@
                                 </button>
                             </div>
 
-                            {/* Search */}
-                            <div className="relative w-full sm:w-72">
+                            {/* Search Input */}
+                            <div className="relative w-full md:w-72">
                                 <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"><Icons.Search /></div>
                                 <input 
                                     type="text" 
-                                    placeholder="Filter candidates, skills..." 
+                                    placeholder="Search candidates, skills..." 
                                     className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -313,27 +557,38 @@
                             </div>
                         </div>
 
-                        {/* Track Criteria Banner */}
-                        <div className="mb-8 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 shadow-xl border border-indigo-900/50 flex flex-col md:flex-row items-center justify-between gap-6">
-                            <div className="flex-1">
-                                <div className="flex items-center gap-2 text-indigo-400 text-xs font-black uppercase tracking-widest mb-1">
-                                    <Icons.Check />
-                                    {activeTab === "mechanical" ? "Mechanical Evaluation Criteria" : "Electrical Evaluation Criteria"}
-                                </div>
-                                <h3 className="text-xl font-extrabold text-white">
-                                    {activeTab === "mechanical" 
-                                     ? "Focus: Heavy Machinery, Pumps, Alignment & Pneumatics/Hydraulics" 
-                                     : "Focus: Classic Control, MCC Panels, PLC Diagnostics & Motor Wiring"}
-                                </h3>
-                                <p className="text-slate-300 text-xs mt-1.5 leading-relaxed font-medium">
-                                    {activeTab === "mechanical"
-                                     ? "Evaluating candidates on alignment skills, gearboxes, pumps, compressors, conveyor systems, and overall mechanical troubleshooting."
-                                     : "Evaluating candidates on industrial panel wiring, VFDs, motor starters, sensor diagnostics, power distribution, and PLC panel maintenance."}
-                                </p>
+                        {/* Status Filter Chips */}
+                        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 bg-slate-100/80 p-2.5 rounded-2xl border border-slate-200/60">
+                            <div className="flex items-center gap-2">
+                                <span className="text-xs font-black text-slate-500 uppercase tracking-wider px-2">Status Filter:</span>
+                                <button 
+                                    onClick={() => setStatusFilter("ALL")} 
+                                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${statusFilter === "ALL" ? "bg-slate-900 text-white shadow" : "bg-white text-slate-600 hover:bg-slate-200"}`}
+                                >
+                                    All Candidates ({currentList.length})
+                                </button>
+                                <button 
+                                    onClick={() => setStatusFilter("SHORTLISTED")} 
+                                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${statusFilter === "SHORTLISTED" ? "bg-emerald-600 text-white shadow" : "bg-white text-emerald-700 hover:bg-emerald-50"}`}
+                                >
+                                    Shortlisted ({shortlistedCount})
+                                </button>
+                                <button 
+                                    onClick={() => setStatusFilter("BACKUP")} 
+                                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${statusFilter === "BACKUP" ? "bg-amber-600 text-white shadow" : "bg-white text-amber-700 hover:bg-amber-50"}`}
+                                >
+                                    Backup ({backupCount})
+                                </button>
+                                <button 
+                                    onClick={() => setStatusFilter("REJECTED")} 
+                                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${statusFilter === "REJECTED" ? "bg-rose-600 text-white shadow" : "bg-white text-rose-700 hover:bg-rose-50"}`}
+                                >
+                                    Rejected / Failed ({rejectedCount})
+                                </button>
                             </div>
-                            <div className="bg-indigo-600/30 border border-indigo-400/30 px-5 py-3 rounded-2xl text-center whitespace-nowrap">
-                                <span className="text-[10px] text-indigo-200 font-bold uppercase tracking-widest block">Track Pool</span>
-                                <span className="text-2xl font-black text-white">{currentList.length} Qualified</span>
+
+                            <div className="text-xs font-bold text-slate-500 px-2">
+                                Showing {filteredCandidates.length} of {currentList.length}
                             </div>
                         </div>
 
@@ -343,18 +598,29 @@
                                 <div 
                                     key={c.id} 
                                     onClick={() => setSelectedCandidate(c)}
-                                    className="bg-white rounded-3xl border border-slate-200/90 p-6 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden"
+                                    className={`bg-white rounded-3xl border p-6 shadow-sm hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
+                                        c.evaluationStatus === "Shortlisted" 
+                                        ? "border-slate-200 hover:border-indigo-400" 
+                                        : c.evaluationStatus === "Backup"
+                                        ? "border-amber-200/80 hover:border-amber-400 bg-amber-50/10"
+                                        : "border-rose-200/80 hover:border-rose-400 bg-rose-50/20"
+                                    }`}
                                 >
-                                    <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                                    
                                     <div>
-                                        {/* Rank & Tag */}
+                                        {/* Rank & Evaluation Badge */}
                                         <div className="flex items-center justify-between mb-4 relative z-10">
                                             <span className="text-xs font-black bg-slate-100 text-slate-700 px-3 py-1 rounded-full uppercase tracking-wider border border-slate-200">
                                                 Rank #{c.rank}
                                             </span>
-                                            <span className="text-[10px] font-extrabold bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-wider">
-                                                {c.tag}
+                                            
+                                            <span className={`text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border ${
+                                                c.evaluationStatus === "Shortlisted"
+                                                ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                                : c.evaluationStatus === "Backup"
+                                                ? "bg-amber-50 text-amber-700 border-amber-200"
+                                                : "bg-rose-50 text-rose-700 border-rose-200"
+                                            }`}>
+                                                {c.evaluationStatus === "Shortlisted" ? "✓ Passed / Shortlisted" : c.evaluationStatus === "Backup" ? "⏱ Backup Option" : "✕ Rejected / Failed"}
                                             </span>
                                         </div>
 
@@ -395,10 +661,12 @@
 
                                     {/* Footer Score & Click Hint */}
                                     <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between relative z-10">
-                                        <span className="text-[11px] font-bold text-indigo-600 group-hover:underline">Click for full details</span>
+                                        <span className="text-[11px] font-bold text-indigo-600 group-hover:underline">Click for details</span>
                                         <div className="flex items-center gap-2">
                                             <span className="text-[10px] font-black text-slate-400 uppercase">Score:</span>
-                                            <span className="text-lg font-black text-white bg-indigo-600 px-3 py-1 rounded-xl shadow-sm">
+                                            <span className={`text-lg font-black text-white px-3 py-1 rounded-xl shadow-sm ${
+                                                c.score >= 8.0 ? "bg-emerald-600" : c.score >= 7.0 ? "bg-amber-600" : "bg-rose-600"
+                                            }`}>
                                                 {c.score}/10
                                             </span>
                                         </div>
@@ -424,13 +692,21 @@
 
                                 {/* Modal Header */}
                                 <div className="flex items-start gap-4 border-b border-slate-100 pb-6 pr-12">
-                                    <div className="h-16 w-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shrink-0">
+                                    <div className={`h-16 w-16 text-white rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shrink-0 ${
+                                        selectedCandidate.score >= 8.0 ? "bg-emerald-600" : selectedCandidate.score >= 7.0 ? "bg-amber-600" : "bg-rose-600"
+                                    }`}>
                                         {selectedCandidate.score}
                                     </div>
                                     <div>
                                         <div className="flex items-center gap-2">
-                                            <span className="text-[10px] font-black bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded-md uppercase border border-indigo-100">
-                                                {selectedCandidate.tag}
+                                            <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-md uppercase border ${
+                                                selectedCandidate.evaluationStatus === "Shortlisted"
+                                                ? "bg-emerald-50 text-emerald-700 border-emerald-100"
+                                                : selectedCandidate.evaluationStatus === "Backup"
+                                                ? "bg-amber-50 text-amber-700 border-amber-100"
+                                                : "bg-rose-50 text-rose-700 border-rose-100"
+                                            }`}>
+                                                {selectedCandidate.evaluationStatus}
                                             </span>
                                             <span className="text-[10px] font-black bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md uppercase">
                                                 Rank #{selectedCandidate.rank}
@@ -552,5 +828,3 @@
 </body>
 </html>
 ```eof
-
-هذا البرنامج يمنحك مرونة التصفح السريع بين الشق الميكانيكي والشق الكهربائي، ويسمح لك بالنقر على أي مرشح لمعاينة أدق تفاصيله لسهولة اتخاذ القرار. أبلغني إذا كانت لديك أي ملاحظات أو سير إضافية ترغب في تحليلها!
