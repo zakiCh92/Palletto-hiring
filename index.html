@@ -32,11 +32,10 @@
             Search: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>,
             X: () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>,
             ChevronRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>,
-            Briefcase: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>,
-            AlertCircle: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            Briefcase: () => <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
         };
 
-        // ALL CANDIDATES INCLUDED (SHORTLISTED, BACKUP & REJECTED)
+        // MECHANICAL TRACK CANDIDATES
         const mechanicalCandidates = [
             { 
                 id: "M1", 
@@ -255,6 +254,7 @@
             }
         ];
 
+        // ELECTRICAL TRACK CANDIDATES (INCLUDING SAMADHAN MORE)
         const electricalCandidates = [
             { 
                 id: "E1", 
@@ -428,7 +428,7 @@
                 score: 7.8, 
                 rank: 8,
                 evaluationStatus: "Backup",
-                tag: "Automation Backup",
+                tag: "Automation Specialist",
                 primarySkills: ["PLC Allen Bradley", "SCARA / Fanuc Robots", "Vision Systems & CCD", "Sensors & PID", "VFD Drives"],
                 highlights: "High-tech background in IPC-based automation, Allen Bradley PLCs, robotics, sensors, and vision systems. Ideal for advanced control systems.",
                 detailedExp: [
@@ -439,6 +439,28 @@
             },
             { 
                 id: "E9", 
+                name: "Samadhan Pralhad More", 
+                title: "Wireman / Electrical Panel Technician", 
+                totalExp: "15+ Years", 
+                gulfExp: "No (India - Pune)", 
+                degree: "Electronic Tech Cert. (MSME)", 
+                age: 37, 
+                status: "Married", 
+                prevCompany: "Infinity Engineering Co.", 
+                score: 7.5, 
+                rank: 9,
+                evaluationStatus: "Backup",
+                tag: "Panel Wiring Specialist",
+                primarySkills: ["MCC/PCC Panel Wiring", "PLC Panel Assembly", "Control Cabinet Maintenance", "Machine Field Wiring", "Cable Termination & Glanding"],
+                highlights: "15+ years hands-on experience in control panel assembly, MCC/PCC/PLC panel wiring, machine field wiring, and electrical troubleshooting at Infinity Engineering.",
+                detailedExp: [
+                    "Infinity Engineering Co. (Pune) - Wireman / Panel Technician",
+                    "Vighnahartha Electricals - Wireman / Partner Support",
+                    "Master Electricals - Panel Assembly Wireman"
+                ]
+            },
+            { 
+                id: "E10", 
                 name: "Gopal Rajbhar", 
                 title: "Electrical Technician", 
                 totalExp: "11 Years", 
@@ -448,7 +470,7 @@
                 status: "Married", 
                 prevCompany: "Mazagon Dock / Sharad Insulation", 
                 score: 5.0, 
-                rank: 9,
+                rank: 10,
                 evaluationStatus: "Rejected",
                 tag: "Rejected - Basic Wiring Only",
                 primarySkills: ["Cabinet Wiring", "MCC Cable Laying"],
@@ -456,7 +478,7 @@
                 detailedExp: ["Mazagon Dock Shipbuilders - Electrician"]
             },
             { 
-                id: "E10", 
+                id: "E11", 
                 name: "Shaik Soharab", 
                 title: "Electrician", 
                 totalExp: "5 Years", 
@@ -466,7 +488,7 @@
                 status: "Single", 
                 prevCompany: "L&T / PRIDE Dubai", 
                 score: 3.0, 
-                rank: 10,
+                rank: 11,
                 evaluationStatus: "Rejected",
                 tag: "Rejected - Facility Building",
                 primarySkills: ["Building Wiring", "General Lighting"],
@@ -474,7 +496,7 @@
                 detailedExp: ["PRIDE Building Contracting - Industrial Electrician"]
             },
             { 
-                id: "E11", 
+                id: "E12", 
                 name: "Nashad P", 
                 title: "House Electrician", 
                 totalExp: "4 Years", 
@@ -484,7 +506,7 @@
                 status: "Single", 
                 prevCompany: "Residential Contracting", 
                 score: 1.0, 
-                rank: 11,
+                rank: 12,
                 evaluationStatus: "Rejected",
                 tag: "Rejected - House Wiring",
                 primarySkills: ["House Wiring", "Domestic Lighting"],
@@ -494,7 +516,7 @@
         ];
 
         function App() {
-            const [activeTab, setActiveTab] = useState("mechanical");
+            const [activeTab, setActiveTab] = useState("electrical");
             const [statusFilter, setStatusFilter] = useState("ALL");
             const [searchTerm, setSearchTerm] = useState("");
             const [selectedCandidate, setSelectedCandidate] = useState(null);
